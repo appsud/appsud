@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block body %}
+<div class="span3">
+	<img src="/static/site_media/img/Logo_appsud02.png" class="appsud_logo"/>
+	<img src="/static/site_media/img/appsud_brknegg.png" class="brk_egg"/>
+	<a class="btn btn-large btn-primary" href="/register/" name="register">Free Registration</a>
+</div>
+<div class="span3 offset3">
+	<form method="post" action="/authentication/">{% csrf_token %}
+		<div>
+			<label class="control-label" for="inputusername"><h5>USERNAME</h5></label>
+			<input type="text" name="username" placeholder="Username">
+		</div>
+		<div>
+			<label class="control-label" for="inputpassword"><h5>PASSWORD</h5></label>
+			<input type="password" name="password" placeholder="●●●●●●●">
+		</div>
+		<input type="submit" class="btn btn-primary" value="login" name="login">
+	</form>
+</div>
+{% endblock %}

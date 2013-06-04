@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Edit profile{% endblock %}
+{% block body %}
+<div class="span4">
+	<form method="post" enctype="multipart/form-data">{% csrf_token %}
+		<label for="id_username" class="control-label"><h5>Username</h5></label>
+		<input class="span4" id="id_username" name="username" placeholder="Username" type="text" value="{{ user.username }}">
+		<label for="id_email" class="control-label"><h5>Email</h5></label>
+		<input class="span4" id="id_email" name="email" placeholder="Email" type="text" value="{{ user.email }}">
+        <label for="id_phone" class="control-label"><h5>Phone</h5></label>
+        <input class="span4" id="id_phone" name="phone" placeholder="Phone Number" type="text" value="{{ profile.phone }}">
+    	<label for="id_website" class="control-label"><h5>Website</h5></label>
+    	<input class="span4" id="id_website" name="website" placeholder="Enter your website" type="text" value="{{ profile.website }}">
+    	<label for="id_propic" class="control-label"><h5>Change Profile Picture</h5></label>
+    	<img src="/static/{{ profile.profile_picture }}" style="width:100px;height:'100px"/>
+    	<input id="id_propic" name="propic" type="file">
+	</form>
+</div>
+<div class="span4">
+	
+</div>
+</form>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block body %}
+	<div class="span4">
+		<form method="post" enctype="multipart/form-data">{% csrf_token %}
+			<!-- <label>Username</label><input type="text" name="username"><br/>
+			<label>Email</label><input type="text" name="email"><br/> 
+			<label>Password</label><input type="password" name="password"><br/>-->
+			<!-- {#{ form.as_p }#} -->
+			<div class="field">
+	            {{ form.username.errors }}
+	            <label for="id_username" class="control-label"><h5>Username</h5></label>
+	            {{ form.username }}
+	        </div>
+	        <div class="field">
+	            {{ form.email.errors }}
+	            <label for="id_email" class="control-label"><h5>Email</h5></label>
+	            {{ form.email }}
+	        </div>
+	        <div class="field">
+	            {{ form.password.errors }}
+	            <label for="id_password" class="control-label"><h5>Password</h5></label>
+	            {{ form.password }}
+	        </div>
+	        <div class="field">
+	            {{ form.choice_field.errors }}
+	            <label for="id_country" class="control-label"><h5>Country</h5></label>
+	            {{ form.choice_field }}
+	        </div>
+	        <div class="field">
+	            {{ form.phone.errors }}
+	            <label for="id_phone" class="control-label"><h5>Phone</h5></label>
+	            {{ form.phone }}
+	        </div>
+	        <div class="field">
+	        	{{ form.website.errors }}
+	        	<label for="id_website" class="control-label"><h5>Website</h5></label>
+	        	{{ form.website }}
+	        </div>
+	        <div class="field">
+	        	{{ form.propic.errors }}
+	        	<label for="id_propic" class="control-label"><h5>Choose a Profile Picture</h5></label>
+	        	{{ form.propic }}
+	        </div>
+	        <div>
+				<input type="submit" class="btn btn-primary span4 reg_button" value="register" name="register"> 
+			</div>
+		</form>
+	</div>
+{% endblock %}

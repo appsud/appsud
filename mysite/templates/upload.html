@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Upload{% endblock %}
+{% block body %}
+<form method="post" enctype="multipart/form-data" id="myform">{% csrf_token %}
+	<div class="span4 well">
+		<div class="field">
+	        {{ form.app_name.errors }}
+	        <label for="id_app_name" class="control-label"><h5>Application Name</h5></label>
+	        {{ form.app_name }}
+	    </div>
+	    <div class="field">
+	        {{ form.version.errors }}
+	        <label for="id_version" class="control-label"><h5>Version</h5></label>
+	        {{ form.version }}
+	    </div>
+	    <div class="field">
+	        {{ form.category.errors }}
+	        <label for="id_category" class="control-label"><h5>category</h5></label>
+	        {{ form.category }}
+	    </div>
+	    <div class="field">
+	        {{ form.license.errors }}
+	        <label for="id_license" class="control-label"><h5>License</h5></label>
+	        {{ form.license }}
+	    </div>
+	    <div class="field">
+	        {{ form.description.errors }}
+	        <label for="id_description" class="control-label"><h5>Description</h5></label>
+	        {{ form.description }}
+	    </div>
+	</div>
+	<div style="" id="second_div">
+		<div class='span4 well'>
+			<div class="field">
+		        {{ form.android_version.errors }}
+		        <label for="id_android_version" class="control-label"><h5>Android Version</h5></label>
+		        {{ form.android_version }}
+	    	</div>
+			<div class="field">
+		        {{ form.display_banner.errors }}
+		        <label for="id_display_banner" class="control-label"><h5>Display Banner</h5></label>
+		        {{ form.display_banner }}
+	    	</div>
+	    	<div class="field">
+		        {{ form.screenshot1.errors }}
+		        <label for="id_display_banner" class="control-label"><h5>screenshot-1</h5></label>
+		        {{ form.screenshot1 }}
+	    	</div>
+	    	<div class="field">
+		        {{ form.screenshot2.errors }}
+		        <label for="id_screenshot2" class="control-label"><h5>screenshot-2</h5></label>
+		        {{ form.screenshot2 }}
+	    	</div>
+	    	<div class="field">
+		        {{ form.screenshot3.errors }}
+		        <label for="id_screenshot3" class="control-label"><h5>screenshot-3</h5></label>
+		        {{ form.screenshot3 }}
+	    	</div>
+	    	<div class="field_apk">
+		        {{ form.apk.errors }}
+		        <label for="id_apk" class="control-label"><h5>Upload your apk file</h5></label>
+		        {{ form.apk }}
+	    	</div>
+	    	<div>
+	    		<input type='submit' class='btn btn-primary span4 publish_button' id="publish_button" value='Publish'>
+	    	</div>
+		</div>
+	</div>
+</form>
+{% endblock %}
+{% block script %}
+	<script type="text/javascript">
+		$('#publish_button').click(function(){
+			file = $('#apk_upload').val();
+			extention = file.substr((file.lastIndexOf('.') +1));
+			// if((extention !== 'apk')||(file == '')){
+			// 	$('.field_apk').append('<ul class="errorlist"><li>Upload a valid apk</li></ul>')
+			// 	return false;
+			// }
+		})
+		// $('#myform').bValidator();
+	</script>
+{% endblock %}
