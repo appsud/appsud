@@ -95,11 +95,20 @@ def upload_application(request):
 
 @login_required
 def edit_profile(request):
+    user = request.user
+    p = user.get_profile()
     if request.method == 'POST':
-        return HttpResponse('hello')
+        phone = request.POST['phone']
+        website = request.POST['website']
+        try:
+            propic = request.FILES['propic']
+        except:
+            p.phone = phone
+            p.website = website
+            p.profile_picture = propic
+            p.save()
+            return HttpResponse('hello')
     else:
-        user = request.user
-        p = user.get_profile()
         return render(request,'edit_profile.html',{'profile':p})
 
 
