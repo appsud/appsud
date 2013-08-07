@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(r'^home/$',views.home,name='home'),
     url(r'^user_logout/$', views.user_logout,name='user_logout'),
     url(r'^upload_application/$',views.upload_application,name='upload_application'),
-    url(r'^edit_profile/$',views.edit_profile,name='edit_profile')
+    url(r'^edit_profile/$',views.edit_profile,name='edit_profile'),
+    url(r'^apps/(?P<app_id>\d+)/$',views.app_details,name='app_details')
 )

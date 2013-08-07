@@ -20,7 +20,7 @@ def index(request):
 
 def register(request):
     if request.method == 'POST': # If the form has been submitted...
-        form = RegisterForm(request.POST) # A form bound to the POST data
+        form = RegisterForm(request.POST,request.FILES) # A form bound to the POST data
         if form.is_valid(): 
             username = request.POST['username']
             password = request.POST['password']
@@ -59,7 +59,8 @@ def authentication(request):
 @login_required
 def home(request):
     propic = request.user.get_profile().profile_picture
-    return render(request,'home.html', {'profile_picture':propic})
+    app_details = ApplicationDetails.objects.all()
+    return render(request,'home.html', {'profile_picture':propic,'app_details':app_details})
 
 def user_logout(request):
     logout(request)
@@ -110,6 +111,12 @@ def edit_profile(request):
             return HttpResponse('hello')
     else:
         return render(request,'edit_profile.html',{'profile':p})
+
+@login_required
+def app_details(request,app_id):
+    details = ApplicationDetails.objects.get(id=app_id)
+    print details.name
+    return HttpResponse('success')
 
 
 

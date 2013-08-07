@@ -4,5 +4,8 @@
 <div class="span2">
 	<a class='btn btn-primary' href='{% url "upload_application" %}'>Upload New App</a>
 	<img src="/static/{{ profile_picture }}"/>
+	{% for j in app_details %}
+		<a href="/apps/{{ j.id }}">{{ j.name }},version{{ j.version }}</a><br/>
+	{% endfor %}
 </div>
 {% endblock %}
